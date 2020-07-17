@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "336729172149",
+    "firebase_url": "https://okuyanmuhendis-7259d.firebaseio.com",
+    "project_id": "okuyanmuhendis-7259d",
+    "storage_bucket": "okuyanmuhendis-7259d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336729172149:android:f22149019067e6e44d76fc",
+        "android_client_info": {
+          "package_name": "com.example.okuyan_muhendis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336729172149-2qu41fcgq6kaf0gs1sl30749h6543lp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8jM6gYzUCfPY8gfBXO6m1qhW2bRWC0lA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336729172149-2qu41fcgq6kaf0gs1sl30749h6543lp7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
