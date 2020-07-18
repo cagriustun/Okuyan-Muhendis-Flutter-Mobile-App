@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 
-class Signin extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggleView;
-  Signin({this.toggleView});
+  Register({this.toggleView});
   @override
-  _SigninState createState() => _SigninState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SigninState extends State<Signin> {
+class _RegisterState extends State<Register> {
   final AuthService _auth = AuthService();
-
+  final _formKey = GlobalKey<FormState>();
   //email and pass
   String email = '';
   String password = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +23,11 @@ class _SigninState extends State<Signin> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text('GİRİŞ YAP'),
+        title: Text('ÜYE OL'),
         actions: <Widget>[
           FlatButton.icon(
               icon: Icon(Icons.person),
-              label: Text('ÜYE OL'),
+              label: Text('GİRİŞ YAP'),
               onPressed: () {
                 widget.toggleView();
               })
@@ -35,10 +36,13 @@ class _SigninState extends State<Signin> {
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
+          key: _formKey,
           child: Column(
             children: <Widget>[
               SizedBox(height: 20.0),
               TextFormField(
+                validator: (val) =>
+                    val.isEmpty ? 'Mail Adresinizi Giriniz' : null,
                 onChanged: (val) {
                   setState(() => email = val);
                 },
@@ -48,6 +52,8 @@ class _SigninState extends State<Signin> {
               ),
               TextFormField(
                 obscureText: true,
+                validator: (val) =>
+                    val.length < 6 ? '6 Karakterden Uzun Şifre Giriniz' : null,
                 onChanged: (val) {
                   setState(() => password = val);
                 },
@@ -58,13 +64,24 @@ class _SigninState extends State<Signin> {
               RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
-                  'Giriş Yap',
+                  'Üye Ol',
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-                  print(email);
-                  print(password);
+                  if (_formKey.currentState.validate()) {
+                    dynamic result = await _auth.registerWithEmailAndPassword(
+                        email, password);
+                    if (result == null) {
+                      setState(() =>
+                          error = 'Lütfen kayıtlı bir mail adresi giriniz');
+                    }
+                  }
                 },
+              ),
+              SizedBox(height: 12.0),
+              Text(
+                error,
+                style: TextStyle(color: Colors.red, fontSize: 14.0),
               )
             ],
           ),
@@ -73,5 +90,3 @@ class _SigninState extends State<Signin> {
     );
   }
 }
-
-class True {}

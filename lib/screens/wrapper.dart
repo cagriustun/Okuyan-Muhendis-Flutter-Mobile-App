@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:okuyan_muhendis/models/user.dart';
 import 'package:okuyan_muhendis/screens/authenticate/authenticate.dart';
+import 'package:okuyan_muhendis/screens/home/home.dart';
 import 'package:provider/provider.dart';
 
 class Wrapper extends StatelessWidget {
@@ -10,6 +11,10 @@ class Wrapper extends StatelessWidget {
     print(user);
 
     // return either Home or Authenticate widget
-    return Authenticate();
+    if (user == null) {
+      return Authenticate();
+    } else {
+      return Home();
+    }
   }
 }
