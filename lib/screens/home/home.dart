@@ -35,8 +35,11 @@ class MyHomePage extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Text('Side Menu Tutorial'),
-      ),
+          child: SizedBox(
+        width: 300,
+        height: 150,
+        child: RaisedButton(onPressed: () {}, child: Text('Hello World!')),
+      )),
     );
   }
 }

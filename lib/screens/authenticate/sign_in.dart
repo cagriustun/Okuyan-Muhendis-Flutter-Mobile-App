@@ -26,11 +26,10 @@ class _SigninState extends State<Signin> {
     return loading
         ? Loading()
         : Scaffold(
-            backgroundColor: Colors.brown[100],
+            backgroundColor: Colors.blue[100],
             appBar: AppBar(
-              backgroundColor: Colors.brown[400],
+              backgroundColor: Colors.blue[400],
               elevation: 0.0,
-              title: Text('GİRİŞ YAP'),
               actions: <Widget>[
                 FlatButton.icon(
                     icon: Icon(Icons.person),
@@ -46,6 +45,7 @@ class _SigninState extends State<Signin> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
+                    Image.asset('assets/images/logofsm.png'),
                     SizedBox(height: 20.0),
                     TextFormField(
                       decoration:
@@ -74,7 +74,7 @@ class _SigninState extends State<Signin> {
                       height: 20.0,
                     ),
                     RaisedButton(
-                      color: Colors.pink[400],
+                      color: Colors.grey[500],
                       child: Text(
                         'Giriş Yap',
                         style: TextStyle(color: Colors.white),
@@ -91,10 +91,6 @@ class _SigninState extends State<Signin> {
                             });
                           }
                         }
-                        // if (result == null) {
-                        //   setState(() =>
-                        //       error = 'Lütfen kayıtlı bir mail adresi giriniz');
-                        // }
                       },
                     ),
                     SizedBox(height: 12.0),

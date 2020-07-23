@@ -25,11 +25,10 @@ class _RegisterState extends State<Register> {
     return loading
         ? Loading()
         : Scaffold(
-            backgroundColor: Colors.brown[100],
+            backgroundColor: Colors.blue[100],
             appBar: AppBar(
-              backgroundColor: Colors.brown[400],
+              backgroundColor: Colors.blue[400],
               elevation: 0.0,
-              title: Text('ÜYE OL'),
               actions: <Widget>[
                 FlatButton.icon(
                     icon: Icon(Icons.person),
@@ -45,6 +44,7 @@ class _RegisterState extends State<Register> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
+                    Image.asset('assets/images/logofsm.png'),
                     SizedBox(height: 20.0),
                     TextFormField(
                       decoration:
@@ -73,7 +73,7 @@ class _RegisterState extends State<Register> {
                       height: 20.0,
                     ),
                     RaisedButton(
-                      color: Colors.pink[400],
+                      color: Colors.grey[500],
                       child: Text(
                         'Üye Ol',
                         style: TextStyle(color: Colors.white),
@@ -95,8 +95,14 @@ class _RegisterState extends State<Register> {
                     SizedBox(height: 12.0),
                     Text(
                       error,
-                      style: TextStyle(color: Colors.red, fontSize: 14.0),
+                      style: TextStyle(color: Colors.red, fontSize: 16.0),
+                    ),
+                    /* SizedBox(height: 12.0),
+                    Text(
+                      'Üyeliğinizle Devam Etmek İçin Tıklayın',
+                      style: TextStyle(color: Colors.black, fontSize: 16.0),
                     )
+                    */
                   ],
                 ),
               ),
