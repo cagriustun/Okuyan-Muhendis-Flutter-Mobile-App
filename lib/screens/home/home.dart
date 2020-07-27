@@ -34,12 +34,23 @@ class MyHomePage extends StatelessWidget {
           )
         ],
       ),
+      /*
       body: Center(
           child: SizedBox(
         width: 300,
         height: 150,
         child: RaisedButton(onPressed: () {}, child: Text('Hello World!')),
       )),
+      */
+
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/bookcase.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
     );
   }
 }
