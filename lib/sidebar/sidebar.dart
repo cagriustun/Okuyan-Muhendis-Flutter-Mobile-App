@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
+import 'package:okuyan_muhendis/screens/adviceOfTheMonth/adviceOfTheMonth.dart';
 import 'package:okuyan_muhendis/screens/authenticate/sign_in.dart';
+import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
+import 'package:okuyan_muhendis/screens/myList/myList.dart';
 import 'package:okuyan_muhendis/screens/profile/profile.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 
@@ -22,40 +26,39 @@ class NavDrawer extends StatelessWidget {
                     fit: BoxFit.cover)),
           ),
           ListTile(
-            leading: Icon(Icons.input),
-            title: Text('1'),
+            leading: Icon(Icons.book),
+            title: Text('Kitap Analizi'),
             onTap: () {
-              print('1');
               Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Profile()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => BookAnalysis()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.verified_user),
-            title: Text('2'),
+            leading: Icon(Icons.library_books),
+            title: Text('Hocalardan Tavsiyeler'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Profile()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AdviceOfTeacher()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('3'),
+            leading: Icon(Icons.favorite),
+            title: Text('Ayın Tavsiyesi'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Profile()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AdviceOfTheMonth()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.border_color),
-            title: Text('4'),
+            leading: Icon(Icons.list),
+            title: Text('Listem'),
             onTap: () {
               Navigator.pop(context);
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Profile()));
+                  context, MaterialPageRoute(builder: (context) => MyList()));
             },
           ),
           ListTile(

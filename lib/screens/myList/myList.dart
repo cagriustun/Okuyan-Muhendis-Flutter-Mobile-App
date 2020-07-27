@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Profile extends StatelessWidget {
+class MyList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: Text('Kitap Listem'),
       ),
       body: Container(
         child: Center(
-          child: Text('Profile Page'),
+          child: Text('Kitap Listem'),
         ),
       ),
     );
