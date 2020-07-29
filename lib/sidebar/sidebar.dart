@@ -4,7 +4,6 @@ import 'package:okuyan_muhendis/screens/adviceOfTheMonth/adviceOfTheMonth.dart';
 import 'package:okuyan_muhendis/screens/authenticate/sign_in.dart';
 import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
 import 'package:okuyan_muhendis/screens/myList/myList.dart';
-import 'package:okuyan_muhendis/screens/profile/profile.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 
 class NavDrawer extends StatelessWidget {
