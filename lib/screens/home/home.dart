@@ -57,7 +57,7 @@ class MyHomePage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.only(top: 30.0, left: 5.0, right: 5.0),
                   decoration: BoxDecoration(
-                    color: Colors.amber,
+                    color: Colors.blue,
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: GestureDetector(
@@ -73,28 +73,6 @@ class MyHomePage extends StatelessWidget {
             },
           );
         }).toList(),
-
-        /*
-        height: 500.0,
-        enlargeCenterPage: true,
-        autoPlay: true,
-        aspectRatio: 16 / 9,
-        autoPlayCurve: Curves.fastOutSlowIn,
-        enableInfiniteScroll: true,
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
-        viewportFraction: 0.8,
-        items: [
-          Container(
-            margin: EdgeInsets.only(top: 30.0, left: 5.0, right: 5.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                image: DecorationImage(
-                  image: AssetImage('assets/books/sucveceza.png'),
-                  fit: BoxFit.fill,
-                )),
-          )
-        ],
-        */
       ),
     );
   }
