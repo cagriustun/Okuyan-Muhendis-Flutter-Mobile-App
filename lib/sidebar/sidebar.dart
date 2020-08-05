@@ -25,15 +25,6 @@ class NavDrawer extends StatelessWidget {
                     fit: BoxFit.cover)),
           ),
           ListTile(
-            leading: Icon(Icons.book),
-            title: Text('Kitap Analizi'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BookAnalysis()));
-            },
-          ),
-          ListTile(
             leading: Icon(Icons.library_books),
             title: Text('Hocalardan Tavsiyeler'),
             onTap: () {
