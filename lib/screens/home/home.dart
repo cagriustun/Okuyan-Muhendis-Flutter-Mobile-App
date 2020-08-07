@@ -21,16 +21,16 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     Widget teacherofAdvice = CarouselSlider(
       height: 200.0,
-      enlargeCenterPage: false,
+      enlargeCenterPage: true,
       autoPlay: true,
       aspectRatio: 1 / 2,
       autoPlayCurve: Curves.fastOutSlowIn,
       enableInfiniteScroll: true,
       autoPlayAnimationDuration: Duration(milliseconds: 800),
-      viewportFraction: 0.9,
+      viewportFraction: 0.99,
       items: [
-        'assets/advice/advice1.png',
-        'assets/advice/advice2.png',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/advice1.png',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/advice2.png',
       ].map((i) {
         return Builder(
           builder: (BuildContext context) {
@@ -55,6 +55,7 @@ class _HomeState extends State<Home> {
         );
       }).toList(),
     );
+
     Widget bookSlider = CarouselSlider(
       height: 200.0,
       enlargeCenterPage: true,
