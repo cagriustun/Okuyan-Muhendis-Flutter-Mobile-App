@@ -9,6 +9,7 @@ class BookAnalysis extends StatefulWidget {
 }
 
 class _BookAnalysis extends State<BookAnalysis> {
+  int _currentIndex = 0;
   final String url;
   _BookAnalysis(this.url);
   @override
@@ -19,12 +20,9 @@ class _BookAnalysis extends State<BookAnalysis> {
       ),
       body: Stack(
         children: <Widget>[
-          Container(
-            child: Image.asset(
-              'assets/books/sucveceza.jpg',
-              fit: BoxFit.fitWidth,
-            ),
-          ),
+          Container(alignment: Alignment.topCenter, child: Image.network(url)
+              //body: Image.network(url, width: double.infinity));
+              ),
           SafeArea(
               child: Column(
             children: <Widget>[
@@ -36,7 +34,7 @@ class _BookAnalysis extends State<BookAnalysis> {
                       color: Colors.white),
                   child: Column(
                     children: <Widget>[
-                      const SizedBox(height: 2.0),
+                      const SizedBox(height: 10.0),
                       Expanded(
                         child: SingleChildScrollView(
                           physics: BouncingScrollPhysics(),
@@ -91,6 +89,33 @@ class _BookAnalysis extends State<BookAnalysis> {
             ],
           ))
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Anasayfa'),
+              backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              title: Text('Arama'),
+              backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              title: Text('Listem'),
+              backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.library_books),
+              title: Text('Tavsiyeler'),
+              backgroundColor: Colors.blue)
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
     );
     //body: Image.network(url, width: double.infinity));

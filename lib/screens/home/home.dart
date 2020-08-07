@@ -1,27 +1,97 @@
 import 'package:flutter/material.dart';
+import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
+import 'package:okuyan_muhendis/screens/adviceOfTheMonth/adviceOfTheMonth.dart';
+import 'package:okuyan_muhendis/screens/myList/myList.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 import 'package:okuyan_muhendis/sidebar/sidebar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:okuyan_muhendis/models/books.dart';
 import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
+  _HomeState createState() => _HomeState();
 }
 
-class MyHomePage extends StatelessWidget {
+class _HomeState extends State<Home> {
+  int _currentIndex = 0;
+
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
+    Widget teacherofAdvice = CarouselSlider(
+      height: 200.0,
+      enlargeCenterPage: false,
+      autoPlay: true,
+      aspectRatio: 1 / 2,
+      autoPlayCurve: Curves.fastOutSlowIn,
+      enableInfiniteScroll: true,
+      autoPlayAnimationDuration: Duration(milliseconds: 800),
+      viewportFraction: 0.9,
+      items: [
+        'assets/advice/advice1.png',
+        'assets/advice/advice2.png',
+      ].map((i) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(2.0),
+                ),
+                child: GestureDetector(
+                    child: Image.network(i, fit: BoxFit.fill),
+                    onTap: () {
+                      Navigator.push<Widget>(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BookAnalysis(i),
+                        ),
+                      );
+                    }));
+          },
+        );
+      }).toList(),
+    );
+    Widget bookSlider = CarouselSlider(
+      height: 200.0,
+      enlargeCenterPage: true,
+      autoPlay: true,
+      aspectRatio: 16 / 9,
+      autoPlayCurve: Curves.fastOutSlowIn,
+      enableInfiniteScroll: true,
+      autoPlayAnimationDuration: Duration(milliseconds: 800),
+      viewportFraction: 0.3,
+      items: [
+        'https://upload.wikimedia.org/wikipedia/en/4/4b/Crimeandpunishmentcover.png',
+        'https://upload.wikimedia.org/wikipedia/commons/2/27/The_House_of_the_Dead_-_Fyodor_Dostoyevsky.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/b/b3/Notes_from_underground_cover.jpg',
+      ].map((i) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.only(top: 60.0, left: 10.0, right: 10.0),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: GestureDetector(
+                    child: Image.network(i, fit: BoxFit.fill),
+                    onTap: () {
+                      Navigator.push<Widget>(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BookAnalysis(i),
+                        ),
+                      );
+                    }));
+          },
+        );
+      }).toList(),
+    );
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
@@ -37,42 +107,35 @@ class MyHomePage extends StatelessWidget {
           )
         ],
       ),
-      body: CarouselSlider(
-        height: 500.0,
-        enlargeCenterPage: true,
-        autoPlay: true,
-        aspectRatio: 16 / 9,
-        autoPlayCurve: Curves.fastOutSlowIn,
-        enableInfiniteScroll: true,
-        autoPlayAnimationDuration: Duration(milliseconds: 800),
-        viewportFraction: 0.8,
+      body: ListView(
+        children: <Widget>[teacherofAdvice, bookSlider],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
         items: [
-          'https://upload.wikimedia.org/wikipedia/en/4/4b/Crimeandpunishmentcover.png',
-          'https://upload.wikimedia.org/wikipedia/commons/2/27/The_House_of_the_Dead_-_Fyodor_Dostoyevsky.jpg',
-          'https://upload.wikimedia.org/wikipedia/commons/b/b3/Notes_from_underground_cover.jpg',
-        ].map((i) {
-          return Builder(
-            builder: (BuildContext context) {
-              return Container(
-                  width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.only(top: 30.0, left: 5.0, right: 5.0),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: GestureDetector(
-                      child: Image.network(i, fit: BoxFit.fill),
-                      onTap: () {
-                        Navigator.push<Widget>(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BookAnalysis(i),
-                          ),
-                        );
-                      }));
-            },
-          );
-        }).toList(),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Anasayfa'),
+              backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              title: Text('Arama'),
+              backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              title: Text('Listem'),
+              backgroundColor: Colors.blue),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.library_books),
+              title: Text('Tavsiyeler'),
+              backgroundColor: Colors.blue)
+        ],
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
     );
   }
