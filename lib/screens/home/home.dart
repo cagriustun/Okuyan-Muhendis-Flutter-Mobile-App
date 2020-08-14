@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
-import 'package:okuyan_muhendis/screens/adviceOfTheMonth/adviceOfTheMonth.dart';
+import 'package:okuyan_muhendis/screens/Search/Search.dart';
 import 'package:okuyan_muhendis/screens/myList/myList.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 import 'package:okuyan_muhendis/sidebar/sidebar.dart';
@@ -29,33 +29,37 @@ class _HomeState extends State<Home> {
       autoPlayAnimationDuration: Duration(milliseconds: 800),
       viewportFraction: 0.99,
       items: [
-        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/advice1.png',
-        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/advice2.png',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad1.png',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad2.png',
       ].map((i) {
         return Builder(
           builder: (BuildContext context) {
             return Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(2.0),
-                ),
-                child: GestureDetector(
-                    child: Image.network(i, fit: BoxFit.fill),
-                    onTap: () {
-                      Navigator.push<Widget>(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BookAnalysis(i),
-                        ),
-                      );
-                    }));
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: GestureDetector(
+                  child: Image.network(i, fit: BoxFit.fill),
+                  onTap: () {
+                    Navigator.push<Widget>(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BookAnalysis(i),
+                      ),
+                    );
+                  }),
+            );
           },
         );
       }).toList(),
     );
-
+    Widget spaceBox = Container(
+      alignment: Alignment.center,
+      height: 130,
+    );
     Widget bookSlider = CarouselSlider(
       height: 200.0,
       enlargeCenterPage: true,
@@ -109,7 +113,7 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: ListView(
-        children: <Widget>[teacherofAdvice, bookSlider],
+        children: <Widget>[teacherofAdvice, spaceBox, bookSlider],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -118,7 +122,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               title: Text('Anasayfa'),
-              backgroundColor: Colors.blue),
+              backgroundColor: Colors.black),
           BottomNavigationBarItem(
               icon: Icon(Icons.search),
               title: Text('Arama'),

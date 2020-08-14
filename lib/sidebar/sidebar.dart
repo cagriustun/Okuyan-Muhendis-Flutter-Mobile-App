@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
-import 'package:okuyan_muhendis/screens/adviceOfTheMonth/adviceOfTheMonth.dart';
+import 'package:okuyan_muhendis/screens/Search/Search.dart';
 import 'package:okuyan_muhendis/screens/authenticate/sign_in.dart';
 import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
 import 'package:okuyan_muhendis/screens/myList/myList.dart';
@@ -34,12 +34,12 @@ class NavDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text('Ayın Tavsiyesi'),
+            leading: Icon(Icons.search),
+            title: Text('Arama'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AdviceOfTheMonth()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Search()));
             },
           ),
           ListTile(

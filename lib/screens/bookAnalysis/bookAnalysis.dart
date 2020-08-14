@@ -20,9 +20,7 @@ class _BookAnalysis extends State<BookAnalysis> {
       ),
       body: Stack(
         children: <Widget>[
-          Container(alignment: Alignment.topCenter, child: Image.network(url)
-              //body: Image.network(url, width: double.infinity));
-              ),
+          Container(alignment: Alignment.topCenter, child: Image.network(url)),
           SafeArea(
               child: Column(
             children: <Widget>[
@@ -71,7 +69,7 @@ class _BookAnalysis extends State<BookAnalysis> {
                                 ),
                                 children: <Widget>[
                                   Container(
-                                    alignment: Alignment.topLeft,
+                                    alignment: Alignment.topCenter,
                                     padding: const EdgeInsets.all(16.0),
                                     child: Text(
                                         "Raskolnikov, bir yandan hukuk öğrenimi görürken diğer yandan yoksullukla boğuşan bir genç. Para ihtiyacını ise tefeci bir kadına eşyalarını bırakarak karşılıyor. Yoksulluğuna çare bulamadığı gibi tefeciden yakasını da kurtaramayan Raskolnikov, bu kadının toplumun iyiliği için ölmesi gerektiğini düşünmeye başlıyor.Bir gün Raskolnikov, kendi maddi problemlerinin yanı sıra ailesinden de kötü bir haber alıyor. Kız kardeşinin kendisinden yaşça çok büyük biriyle evleneceğini duyması, ona yeni bir darbe indiriyor. Bunun üzerine Raskolnikov, tefeciyi öldürmeyi aklına koyarak kendini evden dışarı atıyor. Tefeci kadını öldürüp mücevherleri alıyor ancak işlediği cinayete kimsenin tanıklık etmemesi için onun kız kardeşini de öldürmek zorunda kalıyor.Raskolnikov’un ruh hali, bu çifte cinayetle birlikte yerle bir oluyor. İşlediği suçu kimse görmemiş olmasına rağmen korkusu ve vicdanı onu büyük bir mahkumiyete sürüklüyor. Bir yandan mağdur, diğer yandan katil… Raskolnikov’u cinayete iten sebepler, onun alt üst olan iç dünyası ve sonrası ile siz de onun yeniden doğuşuna şahit olacaksınız. Bu kitabı okurken, kalp atışınızın arttığını duyumsayacaksınız."),
