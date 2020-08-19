@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:okuyan_muhendis/models/testUser.dart';
+import 'package:okuyan_muhendis/models/testBook.dart';
 
 class JsonServices {
   static const String url =
       'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/lib/models/books.json';
-  static Future<List<TestUser>> getUsers() async {
+  static Future<List<TestBook>> getBooks() async {
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
-        List<TestUser> list = parseUsers(response.body);
+        List<TestBook> list = parseBooks(response.body);
         return list;
       }
     } catch (e) {
@@ -17,8 +17,8 @@ class JsonServices {
     }
   }
 
-  static List<TestUser> parseUsers(String responseBody) {
+  static List<TestBook> parseBooks(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return parsed.map<TestUser>((json) => TestUser.fromJson(json)).toList();
+    return parsed.map<TestBook>((json) => TestBook.fromJson(json)).toList();
   }
 }

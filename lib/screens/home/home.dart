@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
-import 'package:okuyan_muhendis/screens/Search/Search.dart';
-import 'package:okuyan_muhendis/screens/myList/myList.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 import 'package:okuyan_muhendis/sidebar/sidebar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:okuyan_muhendis/models/books.dart';
 import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
+import 'package:okuyan_muhendis/models/testBook.dart';
+import 'package:okuyan_muhendis/services/jsonServices.dart';
 
 class Home extends StatefulWidget {
   @override

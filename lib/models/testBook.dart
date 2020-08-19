@@ -1,11 +1,11 @@
-class TestUser {
+class TestBook {
   int bookID;
   String bookName;
   String bookAuthor;
   String bookSummary;
   String bookPhoto;
   String bookRecomPhoto;
-  TestUser(
+  TestBook(
       {this.bookID,
       this.bookName,
       this.bookAuthor,
@@ -13,8 +13,8 @@ class TestUser {
       this.bookPhoto,
       this.bookRecomPhoto});
 
-  factory TestUser.fromJson(Map<String, dynamic> json) {
-    return TestUser(
+  factory TestBook.fromJson(Map<String, dynamic> json) {
+    return TestBook(
       bookID: json["bookID"] as int,
       bookName: json["bookName"] as String,
       bookAuthor: json["bookAuthor"] as String,

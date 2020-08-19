@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:okuyan_muhendis/models/testUser.dart';
+import 'package:okuyan_muhendis/models/testBook.dart';
 import 'package:okuyan_muhendis/services/jsonServices.dart';
 
 class Search extends StatefulWidget {
@@ -10,16 +10,16 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   int _currentIndex = 0;
-  List<TestUser> users = List();
-  List<TestUser> filteredUsers = List();
+  List<TestBook> books = List();
+  List<TestBook> filteredBooks = List();
 
   @override
   void initState() {
     super.initState();
-    JsonServices.getUsers().then((usersFromServer) {
+    JsonServices.getBooks().then((booksFromServer) {
       setState(() {
-        users = usersFromServer;
-        filteredUsers = users;
+        books = booksFromServer;
+        filteredBooks = books;
       });
     });
   }
@@ -39,7 +39,7 @@ class _SearchState extends State<Search> {
             ),
             onChanged: (string) {
               setState(() {
-                filteredUsers = users
+                filteredBooks = books
                     .where((u) => (u.bookName
                             .toLowerCase()
                             .contains(string.toLowerCase()) ||
@@ -53,7 +53,7 @@ class _SearchState extends State<Search> {
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.all(10.0),
-              itemCount: filteredUsers.length,
+              itemCount: filteredBooks.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
                   child: Padding(
@@ -63,7 +63,7 @@ class _SearchState extends State<Search> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          filteredUsers[index].bookName,
+                          filteredBooks[index].bookName,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.black,
@@ -73,7 +73,7 @@ class _SearchState extends State<Search> {
                           height: 5.0,
                         ),
                         Text(
-                          filteredUsers[index].bookAuthor,
+                          filteredBooks[index].bookPhoto,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey,
