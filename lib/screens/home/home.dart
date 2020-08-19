@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:okuyan_muhendis/screens/Search/Search.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 import 'package:okuyan_muhendis/sidebar/sidebar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -13,6 +14,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
+  List<TestBook> books = List();
+  List<TestBook> filteredBooks = List();
+
+  @override
+  void initState() {
+    super.initState();
+    JsonServices.getBooks().then((booksFromServer) {
+      setState(() {
+        books = booksFromServer;
+        filteredBooks = books;
+      });
+    });
+  }
 
   final AuthService _auth = AuthService();
   @override
@@ -22,9 +36,9 @@ class _HomeState extends State<Home> {
       enlargeCenterPage: true,
       autoPlay: true,
       aspectRatio: 1 / 2,
-      autoPlayCurve: Curves.fastOutSlowIn,
+      autoPlayCurve: Curves.decelerate,
       enableInfiniteScroll: true,
-      autoPlayAnimationDuration: Duration(milliseconds: 2000),
+      autoPlayAnimationDuration: Duration(milliseconds: 4000),
       viewportFraction: 0.99,
       items: [
         'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad1.png',
@@ -65,12 +79,14 @@ class _HomeState extends State<Home> {
       aspectRatio: 16 / 9,
       autoPlayCurve: Curves.fastOutSlowIn,
       enableInfiniteScroll: true,
-      autoPlayAnimationDuration: Duration(milliseconds: 800),
+      autoPlayAnimationDuration: Duration(milliseconds: 600),
       viewportFraction: 0.3,
       items: [
-        'https://upload.wikimedia.org/wikipedia/en/4/4b/Crimeandpunishmentcover.png',
-        'https://upload.wikimedia.org/wikipedia/commons/2/27/The_House_of_the_Dead_-_Fyodor_Dostoyevsky.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/b/b3/Notes_from_underground_cover.jpg',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/1.jpg',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/2.jpg',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/3.jpg',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/4.jpg',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/5.jpg'
       ].map((i) {
         return Builder(
           builder: (BuildContext context) {
@@ -96,6 +112,7 @@ class _HomeState extends State<Home> {
       }).toList(),
     );
     return Scaffold(
+      backgroundColor: Colors.grey,
       drawer: NavDrawer(),
       appBar: AppBar(
         title: Text('Okuyan Muhendis'),
@@ -116,11 +133,12 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               title: Text('Anasayfa'),
-              backgroundColor: Colors.black),
+              backgroundColor: Colors.blueGrey[500]),
           BottomNavigationBarItem(
               icon: Icon(Icons.search),
               title: Text('Arama'),
@@ -132,7 +150,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               icon: Icon(Icons.library_books),
               title: Text('Tavsiyeler'),
-              backgroundColor: Colors.blue)
+              backgroundColor: Colors.black)
         ],
         onTap: (index) {
           setState(() {

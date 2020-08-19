@@ -35,7 +35,7 @@ class _SearchState extends State<Search> {
           TextField(
             decoration: InputDecoration(
               contentPadding: EdgeInsets.all(15.0),
-              hintText: 'İsim veya Email Giriniz',
+              hintText: 'Kitap İsmi veya Yazar İsmi Giriniz',
             ),
             onChanged: (string) {
               setState(() {
@@ -57,29 +57,49 @@ class _SearchState extends State<Search> {
               itemBuilder: (BuildContext context, int index) {
                 return Card(
                   child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          filteredBooks[index].bookName,
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            color: Colors.black,
+                    padding: const EdgeInsets.all(16.0),
+                    child: Container(
+                      child: FittedBox(
+                        child: Material(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(24.0),
+                          child: Row(
+                            children: <Widget>[
+                              Column(
+                                children: <Widget>[
+                                  Container(
+                                    child: Text(
+                                      filteredBooks[index].bookName,
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Text(
+                                      filteredBooks[index].bookAuthor,
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                child: Image(
+                                  alignment: Alignment.topRight,
+                                  image: NetworkImage(
+                                      filteredBooks[index].bookPhoto),
+                                  width: 150,
+                                  height: 30,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          filteredBooks[index].bookPhoto,
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 );
@@ -110,7 +130,7 @@ class _SearchState extends State<Search> {
               backgroundColor: Colors.blue)
         ],
         onTap: (index) {
-          setState(() {
+          setState(() async {
             _currentIndex = index;
           });
         },
