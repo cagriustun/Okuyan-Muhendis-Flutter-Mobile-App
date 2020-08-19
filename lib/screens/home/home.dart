@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
       aspectRatio: 1 / 2,
       autoPlayCurve: Curves.fastOutSlowIn,
       enableInfiniteScroll: true,
-      autoPlayAnimationDuration: Duration(milliseconds: 800),
+      autoPlayAnimationDuration: Duration(milliseconds: 2000),
       viewportFraction: 0.99,
       items: [
         'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad1.png',

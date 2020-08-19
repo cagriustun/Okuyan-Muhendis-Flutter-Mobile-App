@@ -1,0 +1,42 @@
+[
+{
+  "bookID": "1",
+  "bookName": "Bizi Sürükleyen Nehir",
+  "bookAuthor": "Zülfü Livaneli",
+  "bookSummary": "Bizi Sürükleyen Nehir, Livaneli’nin insanlığın tarih boyunca yıkandığı ırmağı takip ederek vardığı bilgelik noktası. Evrene, insana, insan ruhuna, Türkiye’ye, dünyaya, düne, bugüne ve geleceğe tutulan bir ayna… Livaneli’nin bugüne kadar yazdıklarından, söylediklerinden süzülüp gelenler, hayatın kuytu köşelerinde gezinen, “bir gözü ağlayan, bir gözü gülen” bir bilgenin sözleri.",
+  "bookPhoto": "1.jpg",
+  "bookRecomPhoto": ""
+},
+{
+  "bookID": "2",
+  "bookName": "Körlük",
+  "bookAuthor": "Jose Saramago",
+  "bookSummary": "Distopik eserlere ilgi duyanların elinden düşürmediği Körlük, yayınlandığı günden bu yana adından söz ettirmeye devam ediyor. Portekiz’li yazar José Saramago’ya 1998’de Nobel Edebiyat Ödülü’nü kazandıran eser, konusuyla olduğu kadar zekice kurgulanmış karakterleriyle de dikkat çekiyor. Dönemin liberal demokrasi anlayışına bir eleştiri mahiyetinde kaleme alınan roman, insanların gittikçe bencilleşip olaylar karşısında duyarsızlaşmasını bir körlük metaforu etrafında işliyor.",
+  "bookPhoto": "2.jpg",
+  "bookRecomPhoto": ""
+},
+{
+  "bookID": "3",
+  "bookName": "Suç ve Ceza",
+  "bookAuthor": " Fyodor Dostoyevski",
+  "bookSummary": "Suç ve Ceza; Rodion Romanoviç Raskolnikov adındaki bir gencin işlediği çifte cinayet üzerine yaşadıklarını konu alıyor. Raskolnikov, bir yandan hukuk öğrenimi görürken diğer yandan yoksullukla boğuşan bir genç.",
+  "bookPhoto": "3.jpg",
+  "bookRecomPhoto": ""
+},
+{
+  "bookID": "4",
+  "bookName": "Kurtlarla Koşan Kadınlar",
+  "bookAuthor": "Clarissa P. Estes",
+  "bookSummary": "İnsanlığın uzun tarihi boyunca kadınlara yönelik yapılmış olan hangi araştırmanın doğru olduğunu düşünüyorsunuz? Hiç mi? Bu kitabın yazarı Clarissa P. Estés de aynı şeyi düşünmüş olacak ki kadınları çözümleme noktasında sunduğu farklı önermeler ile adından söz ettirmeyi başarıyor. Kadınların, içlerindeki doğal sese kulak vermelerini öğütleyen eser, kadının varoluşu ve toplumdaki yerini derin bir anlam ve üslup ile ele alıyor. Bunu yaparken de kadınları, kurtlar ile özdeşleştiriyor.",
+  "bookPhoto": "4.jpg",
+  "bookRecomPhoto": ""
+},
+{
+  "bookID": "5",
+  "bookName": "Hayvan Çiftliği",
+  "bookAuthor": "George Orwell",
+  "bookSummary": "Orwell’in çağdaş klasikler arasında değerlendirilen Hayvan Çiftliği romanı, dünya edebiyatının en dikkat çekici hiciv romanları arasında bulunuyor. Romanının alt metninde birden fazla yönetimin olumsuz yönüne yer veren yazar, ana temasını sosyalizm eleştirisi üzerine kuruyor. Orwell, ideoloji bakımından kendisi de sosyalizme eğilimli olmasının yanı sıra romanında totaliter yönetime meydan okuyor.",
+  "bookPhoto": "5.jpg",
+  "bookRecomPhoto": ""
+},
+]
