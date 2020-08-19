@@ -3,7 +3,8 @@ import 'package:http/http.dart' as http;
 import 'package:okuyan_muhendis/models/testUser.dart';
 
 class JsonServices {
-  static const String url = 'https://jsonplaceholder.typicode.com/users';
+  static const String url =
+      'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/lib/models/books.json';
   static Future<List<TestUser>> getUsers() async {
     try {
       final response = await http.get(url);

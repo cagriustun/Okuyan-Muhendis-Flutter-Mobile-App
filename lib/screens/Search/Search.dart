@@ -40,10 +40,12 @@ class _SearchState extends State<Search> {
             onChanged: (string) {
               setState(() {
                 filteredUsers = users
-                    .where((u) => (u.name
+                    .where((u) => (u.bookName
                             .toLowerCase()
                             .contains(string.toLowerCase()) ||
-                        u.email.toLowerCase().contains(string.toLowerCase())))
+                        u.bookAuthor
+                            .toLowerCase()
+                            .contains(string.toLowerCase())))
                     .toList();
               });
             },
@@ -61,7 +63,7 @@ class _SearchState extends State<Search> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          filteredUsers[index].name,
+                          filteredUsers[index].bookName,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.black,
@@ -71,7 +73,7 @@ class _SearchState extends State<Search> {
                           height: 5.0,
                         ),
                         Text(
-                          filteredUsers[index].email,
+                          filteredUsers[index].bookAuthor,
                           style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.grey,
