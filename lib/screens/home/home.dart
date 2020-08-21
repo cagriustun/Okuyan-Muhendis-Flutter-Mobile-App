@@ -112,7 +112,7 @@ class _HomeState extends State<Home> {
       }).toList(),
     );
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       drawer: NavDrawer(),
       appBar: AppBar(
         title: Text('Okuyan Muhendis'),
@@ -138,7 +138,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               title: Text('Anasayfa'),
-              backgroundColor: Colors.blueGrey[500]),
+              backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(Icons.search),
               title: Text('Arama'),
