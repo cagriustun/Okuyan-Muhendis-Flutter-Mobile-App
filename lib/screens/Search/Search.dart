@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:okuyan_muhendis/models/testBook.dart';
+import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
+import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysisTest.dart';
 import 'package:okuyan_muhendis/services/jsonServices.dart';
 
 class Search extends StatefulWidget {
@@ -52,60 +54,26 @@ class _SearchState extends State<Search> {
           ),
           Expanded(
             child: ListView.builder(
-              padding: EdgeInsets.all(10.0),
               itemCount: filteredBooks.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Container(
-                      child: FittedBox(
-                        child: Material(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(24.0),
-                          child: Row(
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[
-                                  Container(
-                                    child: Text(
-                                      filteredBooks[index].bookName,
-                                      style: TextStyle(
-                                        fontSize: 16.0,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Text(
-                                      filteredBooks[index].bookAuthor,
-                                      style: TextStyle(
-                                        fontSize: 16.0,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                child: Image(
-                                  alignment: Alignment.topRight,
-                                  image: NetworkImage(
-                                      filteredBooks[index].bookPhoto),
-                                  width: 150,
-                                  height: 30,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(filteredBooks[index].bookName),
+                  subtitle: Text(filteredBooks[index].bookAuthor),
+                  leading: Image(
+                    alignment: Alignment.topRight,
+                    image: NetworkImage(filteredBooks[index].bookPhoto),
                   ),
+                  trailing: Icon(Icons.arrow_forward),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BookAnalysisTest(index)));
+                  },
                 );
               },
             ),
-          )
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

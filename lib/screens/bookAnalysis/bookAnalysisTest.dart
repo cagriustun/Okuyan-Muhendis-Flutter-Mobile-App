@@ -1,17 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:okuyan_muhendis/models/testBook.dart';
+import 'package:okuyan_muhendis/services/jsonServices.dart';
 
-class BookAnalysis extends StatefulWidget {
-  final String url;
-  BookAnalysis(this.url);
+class BookAnalysisTest extends StatefulWidget {
+  final int index;
+
+  BookAnalysisTest(this.index);
 
   @override
-  _BookAnalysis createState() => _BookAnalysis(url);
+  _BookAnalysisTestState createState() => _BookAnalysisTestState(index);
 }
 
-class _BookAnalysis extends State<BookAnalysis> {
+class _BookAnalysisTestState extends State<BookAnalysisTest> {
+  final int index;
   int _currentIndex = 0;
-  final String url;
-  _BookAnalysis(this.url);
+  _BookAnalysisTestState(this.index);
+  List<TestBook> books = List();
+  List<TestBook> filteredBooks = List();
+  @override
+  void initState() {
+    super.initState();
+    JsonServices.getBooks().then((booksFromServer) {
+      setState(() {
+        books = booksFromServer;
+        filteredBooks = books;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +36,9 @@ class _BookAnalysis extends State<BookAnalysis> {
       ),
       body: Stack(
         children: <Widget>[
-          Container(alignment: Alignment.topCenter, child: Image.network(url)),
+          Container(
+              alignment: Alignment.topCenter,
+              child: Image.network(filteredBooks[index].bookPhoto)),
           SafeArea(
               child: Column(
             children: <Widget>[
@@ -29,7 +47,7 @@ class _BookAnalysis extends State<BookAnalysis> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
-                      color: Colors.grey),
+                      color: Colors.white),
                   child: Column(
                     children: <Widget>[
                       const SizedBox(height: 10.0),
@@ -41,23 +59,18 @@ class _BookAnalysis extends State<BookAnalysis> {
                             children: <Widget>[
                               ListTile(
                                 title: Text(
-                                  "Suç ve Ceza",
+                                  filteredBooks[index].bookName,
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 28.0),
                                 ),
+                                subtitle: Text(
+                                  filteredBooks[index].bookAuthor,
+                                ),
                                 trailing: IconButton(
                                   icon: Icon(Icons.favorite_border),
                                   onPressed: () {},
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0, vertical: 8.0),
-                                child: Text(
-                                  "Suç ve Ceza; Rodion Romanoviç Raskolnikov adındaki bir gencin işlediği çifte cinayet üzerine yaşadıklarını konu alıyor.",
-                                  style: TextStyle(color: Colors.black),
                                 ),
                               ),
                               ExpansionTile(
@@ -71,8 +84,8 @@ class _BookAnalysis extends State<BookAnalysis> {
                                   Container(
                                     alignment: Alignment.topCenter,
                                     padding: const EdgeInsets.all(16.0),
-                                    child: Text(
-                                        "Raskolnikov, bir yandan hukuk öğrenimi görürken diğer yandan yoksullukla boğuşan bir genç. Para ihtiyacını ise tefeci bir kadına eşyalarını bırakarak karşılıyor. Yoksulluğuna çare bulamadığı gibi tefeciden yakasını da kurtaramayan Raskolnikov, bu kadının toplumun iyiliği için ölmesi gerektiğini düşünmeye başlıyor.Bir gün Raskolnikov, kendi maddi problemlerinin yanı sıra ailesinden de kötü bir haber alıyor. Kız kardeşinin kendisinden yaşça çok büyük biriyle evleneceğini duyması, ona yeni bir darbe indiriyor. Bunun üzerine Raskolnikov, tefeciyi öldürmeyi aklına koyarak kendini evden dışarı atıyor. Tefeci kadını öldürüp mücevherleri alıyor ancak işlediği cinayete kimsenin tanıklık etmemesi için onun kız kardeşini de öldürmek zorunda kalıyor.Raskolnikov’un ruh hali, bu çifte cinayetle birlikte yerle bir oluyor. İşlediği suçu kimse görmemiş olmasına rağmen korkusu ve vicdanı onu büyük bir mahkumiyete sürüklüyor. Bir yandan mağdur, diğer yandan katil… Raskolnikov’u cinayete iten sebepler, onun alt üst olan iç dünyası ve sonrası ile siz de onun yeniden doğuşuna şahit olacaksınız. Bu kitabı okurken, kalp atışınızın arttığını duyumsayacaksınız."),
+                                    child:
+                                        Text(filteredBooks[index].bookSummary),
                                   )
                                 ],
                               ),
@@ -116,6 +129,5 @@ class _BookAnalysis extends State<BookAnalysis> {
         },
       ),
     );
-    //body: Image.network(url, width: double.infinity));
   }
 }

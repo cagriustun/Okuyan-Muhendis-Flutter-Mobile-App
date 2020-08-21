@@ -11,6 +11,7 @@ class _MyListState extends State<MyList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         title: Text('Kitap Listem'),
       ),
