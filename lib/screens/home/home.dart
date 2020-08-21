@@ -70,10 +70,35 @@ class _HomeState extends State<Home> {
     );
     Widget spaceBox = Container(
       alignment: Alignment.center,
-      height: 130,
+      height: 90,
+    );
+    Widget tumunuGor = Align(
+      alignment: Alignment.centerRight,
+      child: SizedBox(
+        width: 110.0,
+        height: 30.0,
+        child: Card(
+          elevation: 10.0,
+          color: Colors.blue,
+          child: Row(
+            children: <Widget>[
+              Text(
+                'Tümünü Gör',
+                style: TextStyle(color: Colors.white, fontSize: 14.0),
+                textAlign: TextAlign.center,
+              ),
+              Icon(
+                Icons.arrow_forward,
+                color: Colors.white,
+                size: 20.0,
+              ),
+            ],
+          ),
+        ),
+      ),
     );
     Widget bookSlider = CarouselSlider(
-      height: 200.0,
+      height: 150.0,
       enlargeCenterPage: true,
       autoPlay: true,
       aspectRatio: 16 / 9,
@@ -92,7 +117,7 @@ class _HomeState extends State<Home> {
           builder: (BuildContext context) {
             return Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(top: 60.0, left: 10.0, right: 10.0),
+                margin: EdgeInsets.only(top: 0.0, left: 10.0, right: 10.0),
                 decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(20.0),
@@ -127,8 +152,9 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
-      body: ListView(
-        children: <Widget>[teacherofAdvice, spaceBox, bookSlider],
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [teacherofAdvice, spaceBox, tumunuGor, bookSlider],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
