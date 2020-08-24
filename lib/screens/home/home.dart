@@ -70,33 +70,102 @@ class _HomeState extends State<Home> {
     );
     Widget spaceBox = Container(
       alignment: Alignment.center,
-      height: 90,
+      height: 40,
     );
-    Widget tumunuGor = Align(
-      alignment: Alignment.centerRight,
-      child: SizedBox(
-        width: 110.0,
-        height: 30.0,
-        child: Card(
-          elevation: 10.0,
-          color: Colors.blue,
-          child: Row(
-            children: <Widget>[
-              Text(
-                'Tümünü Gör',
-                style: TextStyle(color: Colors.white, fontSize: 14.0),
-                textAlign: TextAlign.center,
+    Widget row1 = Row(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(right: 15.0, top: 5.0, bottom: 10.0),
+          child: Text('Hocalarımızdan Tavsiyeler',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
               ),
-              Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-                size: 20.0,
+              textAlign: TextAlign.left),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: SizedBox(
+            width: 110.0,
+            height: 30.0,
+            child: Card(
+              color: Colors.blue,
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Tümünü Gör',
+                    style: TextStyle(color: Colors.white, fontSize: 14.0),
+                    textAlign: TextAlign.right,
+                  ),
+                  Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 20.0,
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
+        ),
+      ],
+    );
+    Widget goodSentences = Align(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 40.0, bottom: 40.0),
+        child: Text(
+          '"En büyük mutluluk, mutsuzluğun kaynağını bilmektir."',
+          style: TextStyle(
+              color: Colors.black, fontSize: 17.0, fontStyle: FontStyle.italic),
         ),
       ),
     );
+    Widget row2 = Row(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: SizedBox(
+              width: 292.0,
+              height: 30.0,
+              child: Text('Ayın Seçkin Kitapları',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.left),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: SizedBox(
+            width: 110.0,
+            height: 30.0,
+            child: Card(
+              color: Colors.blue,
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Tümünü Gör',
+                    style: TextStyle(color: Colors.white, fontSize: 14.0),
+                    textAlign: TextAlign.right,
+                  ),
+                  Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 20.0,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+
     Widget bookSlider = CarouselSlider(
       height: 150.0,
       enlargeCenterPage: true,
@@ -154,7 +223,7 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [teacherofAdvice, spaceBox, tumunuGor, bookSlider],
+        children: [row1, teacherofAdvice, goodSentences, row2, bookSlider],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
