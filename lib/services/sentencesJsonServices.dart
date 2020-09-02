@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:okuyan_muhendis/models/sentences.dart';
 
-class JsonServices {
+class JsonServices1 {
   static const String url =
       'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/lib/models/sentences.json';
   static Future<List<Sentences>> getSentences() async {

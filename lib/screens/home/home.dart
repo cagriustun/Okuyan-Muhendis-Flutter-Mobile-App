@@ -5,9 +5,11 @@ import 'package:okuyan_muhendis/screens/myList/myList.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 import 'package:okuyan_muhendis/sidebar/sidebar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
+import 'package:okuyan_muhendis/services/sentencesJsonServices.dart';
+import 'package:okuyan_muhendis/models/sentences.dart';
 import 'package:okuyan_muhendis/models/testBook.dart';
 import 'package:okuyan_muhendis/services/jsonServices.dart';
+import 'dart:math';
 
 class Home extends StatefulWidget {
   @override
@@ -18,6 +20,8 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
   List<TestBook> books = List();
   List<TestBook> filteredBooks = List();
+  List<Sentences> sentences = List();
+  List<Sentences> filteredSentences = List();
 
   @override
   void initState() {
@@ -26,6 +30,12 @@ class _HomeState extends State<Home> {
       setState(() {
         books = booksFromServer;
         filteredBooks = books;
+      });
+    });
+    JsonServices1.getSentences().then((sentencesFromServer) {
+      setState(() {
+        sentences = sentencesFromServer;
+        filteredSentences = sentences;
       });
     });
   }
@@ -103,11 +113,13 @@ class _HomeState extends State<Home> {
         ),
       ],
     );
+    Random random = new Random();
+    int randomNumber = random.nextInt(7);
     Widget goodSentences = Align(
       child: Padding(
         padding: const EdgeInsets.only(top: 40.0, bottom: 40.0),
         child: Text(
-          '"En büyük mutluluk, mutsuzluğun kaynağını bilmektir."',
+          filteredSentences[randomNumber].sentence,
           style: TextStyle(
               color: Colors.black, fontSize: 17.0, fontStyle: FontStyle.italic),
         ),

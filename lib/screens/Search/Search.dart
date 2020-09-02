@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:okuyan_muhendis/models/testBook.dart';
-import 'package:flutter/foundation.dart';
 import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
-import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
 import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysisTest.dart';
 import 'package:okuyan_muhendis/screens/home/home.dart';
 import 'package:okuyan_muhendis/screens/myList/myList.dart';

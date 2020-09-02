@@ -1,27 +1,27 @@
 [
     {
         "sentenceID": 0,
-        "sentence":"'Hayattan pek çok şey öğrenen insanlar, neşeli ve masum kalamazlar.'"    
+        "sentence":"'İnsan ancak anladığı şeyleri duyar.'"    
     },
     {
         "sentenceID": 1,
-        "sentence":"'En büyük mutluluk, mutsuzluğun kaynağını bilmektir.'"
+        "sentence":"'Aynı nehirde iki kere yıkanılmaz.'"
     },
     {
         "sentenceID": 2,
-        "sentence":"'Hayatın acımasız şeyleri var. Ayrılık gibi, özlemek gibi.'"
+        "sentence":"'Bugünün bir daha asla doğmayacağını düşün.'"
     },
     {
         "sentenceID": 3,
-        "sentence":"'Fazla ciddiye almayın şu hayatı, nasıl olsa içinden canlı çıkamayacaksınız.'"
+        "sentence":"'Bazı günlerin hatırası, bütün bir ömre yayılır.'"
     },
     {
         "sentenceID": 4,
-        "sentence":"'Gökyüzünü kaybetmiş bir kuş gibi; üzgün, yorgun ve kırgınım hayata.'"
+        "sentence":"'Bilenler konuşmazlar. Konuşanlar bilmezler.'"
     },
     {
         "sentenceID": 5,
-        "sentence":"'Bu acımasız hayat sana veda etme şansını bile vermedi bana.'"
+        "sentence":"'BAcınmaktansa kıskanılmak dana iyidir.'"
     },
     {
         "sentenceID": 6,
@@ -29,6 +29,6 @@
     },
     {
         "sentenceID": 7,
-        "sentence":"'Hayat avucundaki su gibidir; sen tutmaya çalıştıkça o akıp gider.'"
+        "sentence":"'Bütün günler ölüme gider, son gün varır.'"
     }
 ]
