@@ -23,6 +23,10 @@ class _AdviceOfTeacherState extends State<AdviceOfTeacher> {
       setState(() {
         books = booksFromServer;
         filteredBooks = books;
+        var recomBook = [];
+        for (var filteredBook in filteredBooks) {
+          if (filteredBook.bookRecomTeacher != "") {}
+        }
       });
     });
   }
@@ -42,9 +46,11 @@ class _AdviceOfTeacherState extends State<AdviceOfTeacher> {
                 return ListTile(
                     title:
                         Text(filteredBooks?.elementAt(index)?.bookName ?? ""),
-                    subtitle:
-                        Text(filteredBooks?.elementAt(index)?.bookAuthor ?? ""),
-                    leading: Text(filteredBooks[index].bookRecomTeacher),
+                    subtitle: Text(
+                        // ignore: null_aware_before_operator
+                        filteredBooks?.elementAt(index)?.bookRecomTeacher +
+                                " Hocamızın Tavsiyesidir." ??
+                            ""),
                     trailing: Image(
                       alignment: Alignment.topRight,
                       image: NetworkImage(
