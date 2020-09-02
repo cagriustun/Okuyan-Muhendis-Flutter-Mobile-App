@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:okuyan_muhendis/screens/Search/Search.dart';
+import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
+import 'package:okuyan_muhendis/screens/home/home.dart';
 
 class MyList extends StatefulWidget {
   @override
@@ -6,7 +9,7 @@ class MyList extends StatefulWidget {
 }
 
 class _MyListState extends State<MyList> {
-  int _currentIndex = 0;
+  int _currentIndex = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +47,28 @@ class _MyListState extends State<MyList> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
+            if (_currentIndex == 0) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Home(),
+                ),
+              );
+            } else if (_currentIndex == 1) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Search(),
+                ),
+              );
+            } else if (_currentIndex == 3) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AdviceOfTeacher(),
+                ),
+              );
+            }
           });
         },
       ),

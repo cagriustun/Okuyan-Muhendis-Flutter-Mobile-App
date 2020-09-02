@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:okuyan_muhendis/models/testBook.dart';
 import 'package:flutter/foundation.dart';
+import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
 import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
 import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysisTest.dart';
+import 'package:okuyan_muhendis/screens/home/home.dart';
+import 'package:okuyan_muhendis/screens/myList/myList.dart';
 import 'package:okuyan_muhendis/services/jsonServices.dart';
 
 class Search extends StatefulWidget {
@@ -12,7 +15,7 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   List<TestBook> books = List();
   List<TestBook> filteredBooks = List();
 
@@ -101,8 +104,30 @@ class _SearchState extends State<Search> {
               backgroundColor: Colors.blue)
         ],
         onTap: (index) {
-          setState(() async {
+          setState(() {
             _currentIndex = index;
+            if (_currentIndex == 0) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Home(),
+                ),
+              );
+            } else if (_currentIndex == 2) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyList(),
+                ),
+              );
+            } else if (_currentIndex == 3) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AdviceOfTeacher(),
+                ),
+              );
+            }
           });
         },
       ),

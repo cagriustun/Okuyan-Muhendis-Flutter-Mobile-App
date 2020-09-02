@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:okuyan_muhendis/screens/Search/Search.dart';
 import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
+import 'package:okuyan_muhendis/screens/myList/myList.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 import 'package:okuyan_muhendis/sidebar/sidebar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -160,11 +161,11 @@ class _HomeState extends State<Home> {
       autoPlayAnimationDuration: Duration(milliseconds: 600),
       viewportFraction: 0.3,
       items: [
-        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/1.jpg',
-        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/2.jpg',
-        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/3.jpg',
-        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/4.jpg',
-        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/5.jpg'
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/10.jpg',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/11.jpg',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/12.jpg',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/13.jpg',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/14.jpg'
       ].map((i) {
         return Builder(
           builder: (BuildContext context) {
@@ -181,7 +182,7 @@ class _HomeState extends State<Home> {
                       Navigator.push<Widget>(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => BookAnalysis(i),
+                          builder: (context) => Search(),
                         ),
                       );
                     }));
@@ -234,6 +235,28 @@ class _HomeState extends State<Home> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
+            if (_currentIndex == 1) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Search(),
+                ),
+              );
+            } else if (_currentIndex == 2) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyList(),
+                ),
+              );
+            } else if (_currentIndex == 3) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AdviceOfTeacher(),
+                ),
+              );
+            }
           });
         },
       ),
