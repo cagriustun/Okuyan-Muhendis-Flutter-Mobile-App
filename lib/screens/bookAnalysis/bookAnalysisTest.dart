@@ -12,6 +12,7 @@ class BookAnalysisTest extends StatefulWidget {
 }
 
 class _BookAnalysisTestState extends State<BookAnalysisTest> {
+  Color _iconColor = null;
   final int index;
   int _currentIndex = 0;
   _BookAnalysisTestState(this.index);
@@ -68,9 +69,17 @@ class _BookAnalysisTestState extends State<BookAnalysisTest> {
                                 subtitle: Text(
                                   filteredBooks[index].bookAuthor,
                                 ),
-                                trailing: IconButton(
-                                  icon: Icon(Icons.favorite_border),
-                                  onPressed: () {},
+                                trailing: new IconButton(
+                                  icon: Icon(
+                                    Icons.favorite,
+                                    color: _iconColor,
+                                    size: 30.0,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _iconColor = Colors.red;
+                                    });
+                                  },
                                 ),
                               ),
                               ExpansionTile(
