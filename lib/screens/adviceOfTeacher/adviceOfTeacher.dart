@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:okuyan_muhendis/screens/Search/Search.dart';
+import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysisTest.dart';
 import 'package:okuyan_muhendis/screens/home/home.dart';
 import 'package:okuyan_muhendis/screens/myList/myList.dart';
+import 'package:okuyan_muhendis/services/jsonServices.dart';
+import 'package:okuyan_muhendis/models/testBook.dart';
 
 class AdviceOfTeacher extends StatefulWidget {
   @override
@@ -10,17 +13,53 @@ class AdviceOfTeacher extends StatefulWidget {
 
 class _AdviceOfTeacherState extends State<AdviceOfTeacher> {
   int _currentIndex = 3;
+  List<TestBook> books = List();
+  List<TestBook> filteredBooks = List();
+
+  @override
+  void initState() {
+    super.initState();
+    JsonServices.getBooks().then((booksFromServer) {
+      setState(() {
+        books = booksFromServer;
+        filteredBooks = books;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hocaların Kitap Tavsiyeleri'),
+        title: Text('Tavsiyeler'),
       ),
-      body: Container(
-        child: Center(
-          child: Text('Hocanın Tavsiyeleri Sayfası'),
-        ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView.builder(
+              itemCount: filteredBooks.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                    title:
+                        Text(filteredBooks?.elementAt(index)?.bookName ?? ""),
+                    subtitle:
+                        Text(filteredBooks?.elementAt(index)?.bookAuthor ?? ""),
+                    leading: Text(filteredBooks[index].bookRecomTeacher),
+                    trailing: Image(
+                      alignment: Alignment.topRight,
+                      image: NetworkImage(
+                          filteredBooks?.elementAt(index)?.bookPhoto ?? ""),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BookAnalysisTest(index)));
+                    });
+              },
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -53,18 +92,18 @@ class _AdviceOfTeacherState extends State<AdviceOfTeacher> {
                   builder: (context) => Home(),
                 ),
               );
-            } else if (_currentIndex == 1) {
-              Navigator.push<Widget>(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Search(),
-                ),
-              );
             } else if (_currentIndex == 2) {
               Navigator.push<Widget>(
                 context,
                 MaterialPageRoute(
                   builder: (context) => MyList(),
+                ),
+              );
+            } else if (_currentIndex == 3) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AdviceOfTeacher(),
                 ),
               );
             }
