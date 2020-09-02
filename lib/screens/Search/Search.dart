@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:okuyan_muhendis/models/testBook.dart';
+import 'package:flutter/foundation.dart';
 import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
 import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysisTest.dart';
 import 'package:okuyan_muhendis/services/jsonServices.dart';
@@ -57,20 +58,22 @@ class _SearchState extends State<Search> {
               itemCount: filteredBooks.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(filteredBooks[index].bookName),
-                  subtitle: Text(filteredBooks[index].bookAuthor),
-                  leading: Image(
-                    alignment: Alignment.topRight,
-                    image: NetworkImage(filteredBooks[index].bookPhoto),
-                  ),
-                  trailing: Icon(Icons.arrow_forward),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => BookAnalysisTest(index)));
-                  },
-                );
+                    title:
+                        Text(filteredBooks?.elementAt(index)?.bookName ?? ""),
+                    subtitle:
+                        Text(filteredBooks?.elementAt(index)?.bookAuthor ?? ""),
+                    leading: Image(
+                      alignment: Alignment.topRight,
+                      image: NetworkImage(
+                          filteredBooks?.elementAt(index)?.bookPhoto ?? ""),
+                    ),
+                    trailing: Icon(Icons.arrow_forward),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BookAnalysisTest(index)));
+                    });
               },
             ),
           ),

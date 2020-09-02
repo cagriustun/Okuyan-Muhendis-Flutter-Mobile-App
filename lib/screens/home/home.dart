@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:okuyan_muhendis/screens/Search/Search.dart';
+import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 import 'package:okuyan_muhendis/sidebar/sidebar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -41,8 +42,7 @@ class _HomeState extends State<Home> {
       autoPlayAnimationDuration: Duration(milliseconds: 4000),
       viewportFraction: 0.99,
       items: [
-        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad1.png',
-        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad2.png',
+        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad1.jpg',
       ].map((i) {
         return Builder(
           builder: (BuildContext context) {
@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
                     Navigator.push<Widget>(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BookAnalysis(i),
+                        builder: (context) => AdviceOfTeacher(),
                       ),
                     );
                   }),
@@ -86,26 +86,18 @@ class _HomeState extends State<Home> {
         ),
         Align(
           alignment: Alignment.centerRight,
-          child: SizedBox(
-            width: 110.0,
-            height: 30.0,
-            child: Card(
-              color: Colors.blue,
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'Tümünü Gör',
-                    style: TextStyle(color: Colors.white, fontSize: 14.0),
-                    textAlign: TextAlign.right,
-                  ),
-                  Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                    size: 20.0,
-                  ),
-                ],
-              ),
-            ),
+          child: RaisedButton(
+            color: Colors.blue,
+            onPressed: () {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AdviceOfTeacher(),
+                ),
+              );
+            },
+            child: const Text('Tümünü Gör',
+                style: TextStyle(fontSize: 13, color: Colors.white)),
           ),
         ),
       ],
@@ -141,26 +133,18 @@ class _HomeState extends State<Home> {
         ),
         Align(
           alignment: Alignment.centerRight,
-          child: SizedBox(
-            width: 110.0,
-            height: 30.0,
-            child: Card(
-              color: Colors.blue,
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    'Tümünü Gör',
-                    style: TextStyle(color: Colors.white, fontSize: 14.0),
-                    textAlign: TextAlign.right,
-                  ),
-                  Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                    size: 20.0,
-                  ),
-                ],
-              ),
-            ),
+          child: RaisedButton(
+            color: Colors.blue,
+            onPressed: () {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Search(),
+                ),
+              );
+            },
+            child: const Text('Tümünü Gör',
+                style: TextStyle(fontSize: 13, color: Colors.white)),
           ),
         ),
       ],
