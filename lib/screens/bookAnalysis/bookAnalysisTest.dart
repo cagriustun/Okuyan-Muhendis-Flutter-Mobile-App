@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:okuyan_muhendis/models/testBook.dart';
+import 'package:okuyan_muhendis/screens/Search/Search.dart';
+import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
+import 'package:okuyan_muhendis/screens/myList/myList.dart';
 import 'package:okuyan_muhendis/services/jsonServices.dart';
+import 'package:okuyan_muhendis/screens/home/home.dart';
 
 class BookAnalysisTest extends StatefulWidget {
   final int index;
@@ -14,7 +18,7 @@ class BookAnalysisTest extends StatefulWidget {
 class _BookAnalysisTestState extends State<BookAnalysisTest> {
   Color _iconColor = null;
   final int index;
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   _BookAnalysisTestState(this.index);
   List<TestBook> books = List();
   List<TestBook> filteredBooks = List();
@@ -134,6 +138,35 @@ class _BookAnalysisTestState extends State<BookAnalysisTest> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
+            if (_currentIndex == 0) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Home(),
+                ),
+              );
+            } else if (_currentIndex == 1) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Search(),
+                ),
+              );
+            } else if (_currentIndex == 2) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyList(),
+                ),
+              );
+            } else if (_currentIndex == 3) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AdviceOfTeacher(),
+                ),
+              );
+            }
           });
         },
       ),

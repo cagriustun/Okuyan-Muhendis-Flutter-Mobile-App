@@ -43,42 +43,12 @@ class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    Widget teacherofAdvice = CarouselSlider(
+    Widget teacherofAdvice = Image(
+      image: NetworkImage(
+          'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad1.jpg'),
       height: 200.0,
-      enlargeCenterPage: true,
-      autoPlay: true,
-      aspectRatio: 1 / 2,
-      autoPlayCurve: Curves.decelerate,
-      enableInfiniteScroll: true,
-      autoPlayAnimationDuration: Duration(milliseconds: 4000),
-      viewportFraction: 0.99,
-      items: [
-        'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad1.jpg',
-      ].map((i) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Container(
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: GestureDetector(
-                  child: Image.network(i, fit: BoxFit.fill),
-                  onTap: () {
-                    Navigator.push<Widget>(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AdviceOfTeacher(),
-                      ),
-                    );
-                  }),
-            );
-          },
-        );
-      }).toList(),
     );
+
     Widget spaceBox = Container(
       alignment: Alignment.center,
       height: 40,
