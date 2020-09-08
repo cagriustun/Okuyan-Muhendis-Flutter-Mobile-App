@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     Widget teacherofAdvice = Image(
       image: NetworkImage(
-          'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad1.jpg'),
+          'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad2.jpg'),
       height: 200.0,
     );
 
