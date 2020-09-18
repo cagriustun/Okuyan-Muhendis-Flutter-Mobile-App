@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:okuyan_muhendis/screens/Search/Search.dart';
+import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
+import 'package:okuyan_muhendis/screens/home/home.dart';
+import 'package:okuyan_muhendis/screens/myList/myList.dart';
 
 class BookAnalysis extends StatefulWidget {
   final String url;
@@ -9,7 +13,8 @@ class BookAnalysis extends StatefulWidget {
 }
 
 class _BookAnalysis extends State<BookAnalysis> {
-  int _currentIndex = 0;
+  Color _iconColor = null;
+  int _currentIndex = 1;
   final String url;
   _BookAnalysis(this.url);
   @override
@@ -29,7 +34,7 @@ class _BookAnalysis extends State<BookAnalysis> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
-                      color: Colors.grey),
+                      color: Colors.white),
                   child: Column(
                     children: <Widget>[
                       const SizedBox(height: 10.0),
@@ -41,23 +46,24 @@ class _BookAnalysis extends State<BookAnalysis> {
                             children: <Widget>[
                               ListTile(
                                 title: Text(
-                                  "Suç ve Ceza",
+                                  "Sıradan Bir Gün",
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 28.0),
                                 ),
-                                trailing: IconButton(
-                                  icon: Icon(Icons.favorite_border),
-                                  onPressed: () {},
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0, vertical: 8.0),
-                                child: Text(
-                                  "Suç ve Ceza; Rodion Romanoviç Raskolnikov adındaki bir gencin işlediği çifte cinayet üzerine yaşadıklarını konu alıyor.",
-                                  style: TextStyle(color: Colors.black),
+                                subtitle: Text("Yekta Kopan"),
+                                trailing: new IconButton(
+                                  icon: Icon(
+                                    Icons.favorite,
+                                    color: _iconColor,
+                                    size: 30.0,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _iconColor = Colors.red;
+                                    });
+                                  },
                                 ),
                               ),
                               ExpansionTile(
@@ -72,7 +78,7 @@ class _BookAnalysis extends State<BookAnalysis> {
                                     alignment: Alignment.topCenter,
                                     padding: const EdgeInsets.all(16.0),
                                     child: Text(
-                                        "Raskolnikov, bir yandan hukuk öğrenimi görürken diğer yandan yoksullukla boğuşan bir genç. Para ihtiyacını ise tefeci bir kadına eşyalarını bırakarak karşılıyor. Yoksulluğuna çare bulamadığı gibi tefeciden yakasını da kurtaramayan Raskolnikov, bu kadının toplumun iyiliği için ölmesi gerektiğini düşünmeye başlıyor.Bir gün Raskolnikov, kendi maddi problemlerinin yanı sıra ailesinden de kötü bir haber alıyor. Kız kardeşinin kendisinden yaşça çok büyük biriyle evleneceğini duyması, ona yeni bir darbe indiriyor. Bunun üzerine Raskolnikov, tefeciyi öldürmeyi aklına koyarak kendini evden dışarı atıyor. Tefeci kadını öldürüp mücevherleri alıyor ancak işlediği cinayete kimsenin tanıklık etmemesi için onun kız kardeşini de öldürmek zorunda kalıyor.Raskolnikov’un ruh hali, bu çifte cinayetle birlikte yerle bir oluyor. İşlediği suçu kimse görmemiş olmasına rağmen korkusu ve vicdanı onu büyük bir mahkumiyete sürüklüyor. Bir yandan mağdur, diğer yandan katil… Raskolnikov’u cinayete iten sebepler, onun alt üst olan iç dünyası ve sonrası ile siz de onun yeniden doğuşuna şahit olacaksınız. Bu kitabı okurken, kalp atışınızın arttığını duyumsayacaksınız."),
+                                        "Sıradan bir günde başınıza neler gelebilir? Sıradan bir günde kahvaltı yapıp gazetenizi okuyabilir ve işinize gidebilirsiniz. Çalışırken biraz içiniz geçebilir mesela. Bir kahve içip toparlanabilirsiniz. Sıradan bir günde sevdiklerinizle görüşür, evinize market alışverişi yapabilirsiniz. Sıradan bir günde bir cinayete tanıklık edebilir ve hayatınızın sonsuz yolculuğuna çıkabilirsiniz. Sıradan bir gün size bazen kişisel gelişim kitaplarında yazanlardan fazlasını öğretir."),
                                   )
                                 ],
                               ),
@@ -112,6 +118,35 @@ class _BookAnalysis extends State<BookAnalysis> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
+            if (_currentIndex == 0) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Home(),
+                ),
+              );
+            } else if (_currentIndex == 1) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Search(),
+                ),
+              );
+            } else if (_currentIndex == 2) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyList(),
+                ),
+              );
+            } else if (_currentIndex == 3) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AdviceOfTeacher(),
+                ),
+              );
+            }
           });
         },
       ),

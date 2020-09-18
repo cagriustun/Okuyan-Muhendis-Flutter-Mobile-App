@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:okuyan_muhendis/screens/Search/Search.dart';
 import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
+import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysis.dart';
 import 'package:okuyan_muhendis/screens/myList/myList.dart';
 import 'package:okuyan_muhendis/services/auth.dart';
 import 'package:okuyan_muhendis/sidebar/sidebar.dart';
@@ -43,10 +44,24 @@ class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    Widget teacherofAdvice = Image(
-      image: NetworkImage(
-          'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad2.jpg'),
-      height: 200.0,
+    Widget teacherofAdvice = Column(
+      children: <Widget>[
+        GestureDetector(
+            child: Image(
+              image: NetworkImage(
+                  'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/advice/ad2.jpg'),
+              height: 200.0,
+            ),
+            onTap: () {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BookAnalysis(
+                      'https://raw.githubusercontent.com/cagriustun/okuyan_muhendis/master/assets/bookCovers/7.png'),
+                ),
+              );
+            })
+      ],
     );
 
     Widget spaceBox = Container(
