@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:okuyan_muhendis/models/testBook.dart';
+import 'package:okuyan_muhendis/screens/Search/Search.dart';
 import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
 import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysisTest.dart';
 import 'package:okuyan_muhendis/screens/home/home.dart';
-import 'package:okuyan_muhendis/screens/myList/myList.dart';
 import 'package:okuyan_muhendis/services/jsonServices.dart';
 
-class Search extends StatefulWidget {
+class MyList extends StatefulWidget {
   @override
-  _SearchState createState() => _SearchState();
+  _MyListState createState() => _MyListState();
 }
 
-class _SearchState extends State<Search> {
+class _MyListState extends State<MyList> {
   int _currentIndex = 2;
   List<TestBook> books = List();
   List<TestBook> filteredBooks = List();
@@ -24,6 +23,10 @@ class _SearchState extends State<Search> {
       setState(() {
         books = booksFromServer;
         filteredBooks = books;
+        var recomBook = [];
+        for (var filteredBook in filteredBooks) {
+          if (filteredBook.bookRecomTeacher != "") {}
+        }
       });
     });
   }
@@ -32,31 +35,13 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Arama'),
+        title: Text('Kitap Listem'),
       ),
       body: Column(
         children: <Widget>[
-          TextField(
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(15.0),
-              hintText: 'Kitap İsmi veya Yazar İsmi Giriniz',
-            ),
-            onChanged: (string) {
-              setState(() {
-                filteredBooks = books
-                    .where((u) => (u.bookName
-                            .toLowerCase()
-                            .contains(string.toLowerCase()) ||
-                        u.bookAuthor
-                            .toLowerCase()
-                            .contains(string.toLowerCase())))
-                    .toList();
-              });
-            },
-          ),
           Expanded(
             child: ListView.builder(
-              itemCount: filteredBooks.length,
+              itemCount: 5,
               itemBuilder: (context, index) {
                 return ListTile(
                     title:

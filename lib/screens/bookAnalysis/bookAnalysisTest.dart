@@ -82,6 +82,7 @@ class _BookAnalysisTestState extends State<BookAnalysisTest> {
                                   onPressed: () {
                                     setState(() {
                                       _iconColor = Colors.red;
+                                      favBook(context);
                                     });
                                   },
                                 ),
@@ -172,4 +173,16 @@ class _BookAnalysisTestState extends State<BookAnalysisTest> {
       ),
     );
   }
+}
+
+void favBook(BuildContext context) {
+  var alertDialog = AlertDialog(
+    title: Text("Kitap Eklendi"),
+    content: Text("Kitap Listenize Eklenmiştir"),
+  );
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alertDialog;
+      });
 }
