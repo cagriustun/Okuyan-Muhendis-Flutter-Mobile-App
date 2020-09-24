@@ -74,9 +74,7 @@ class _HomeState extends State<Home> {
           padding: const EdgeInsets.only(right: 15.0, top: 5.0, bottom: 10.0),
           child: Text('Hocalarımızdan Tavsiyeler',
               style: TextStyle(
-                color: Colors.black,
                 fontSize: 24.0,
-                fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.left),
         ),
@@ -123,7 +121,6 @@ class _HomeState extends State<Home> {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.left),
             ),

@@ -98,18 +98,18 @@ class _AdviceOfTeacherState extends State<AdviceOfTeacher> {
                   builder: (context) => Home(),
                 ),
               );
+            } else if (_currentIndex == 1) {
+              Navigator.push<Widget>(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Search(),
+                ),
+              );
             } else if (_currentIndex == 2) {
               Navigator.push<Widget>(
                 context,
                 MaterialPageRoute(
                   builder: (context) => MyList(),
-                ),
-              );
-            } else if (_currentIndex == 3) {
-              Navigator.push<Widget>(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AdviceOfTeacher(),
                 ),
               );
             }

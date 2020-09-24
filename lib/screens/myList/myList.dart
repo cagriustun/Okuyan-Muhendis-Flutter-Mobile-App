@@ -1,27 +1,84 @@
 import 'package:flutter/material.dart';
-import 'package:okuyan_muhendis/screens/Search/Search.dart';
+import 'dart:async';
+import 'package:okuyan_muhendis/models/testBook.dart';
 import 'package:okuyan_muhendis/screens/adviceOfTeacher/adviceOfTeacher.dart';
+import 'package:okuyan_muhendis/screens/bookAnalysis/bookAnalysisTest.dart';
 import 'package:okuyan_muhendis/screens/home/home.dart';
+import 'package:okuyan_muhendis/screens/myList/myList.dart';
+import 'package:okuyan_muhendis/services/jsonServices.dart';
 
-class MyList extends StatefulWidget {
+class Search extends StatefulWidget {
   @override
-  _MyListState createState() => _MyListState();
+  _SearchState createState() => _SearchState();
 }
 
-class _MyListState extends State<MyList> {
+class _SearchState extends State<Search> {
   int _currentIndex = 2;
+  List<TestBook> books = List();
+  List<TestBook> filteredBooks = List();
+
+  @override
+  void initState() {
+    super.initState();
+    JsonServices.getBooks().then((booksFromServer) {
+      setState(() {
+        books = booksFromServer;
+        filteredBooks = books;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: Text('Kitap Listem'),
+        title: Text('Arama'),
       ),
-      body: Container(
-        child: Center(
-          child: Text('Kitap Listem'),
-        ),
+      body: Column(
+        children: <Widget>[
+          TextField(
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.all(15.0),
+              hintText: 'Kitap İsmi veya Yazar İsmi Giriniz',
+            ),
+            onChanged: (string) {
+              setState(() {
+                filteredBooks = books
+                    .where((u) => (u.bookName
+                            .toLowerCase()
+                            .contains(string.toLowerCase()) ||
+                        u.bookAuthor
+                            .toLowerCase()
+                            .contains(string.toLowerCase())))
+                    .toList();
+              });
+            },
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: filteredBooks.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                    title:
+                        Text(filteredBooks?.elementAt(index)?.bookName ?? ""),
+                    subtitle:
+                        Text(filteredBooks?.elementAt(index)?.bookAuthor ?? ""),
+                    leading: Image(
+                      alignment: Alignment.topRight,
+                      image: NetworkImage(
+                          filteredBooks?.elementAt(index)?.bookPhoto ?? ""),
+                    ),
+                    trailing: Icon(Icons.arrow_forward),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => BookAnalysisTest(index)));
+                    });
+              },
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
